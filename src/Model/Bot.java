@@ -1,6 +1,8 @@
 package Model;
 
-public class Bot extends Player{git
+import Strategies.BotPlayingStategy;
+
+public class Bot extends Player{
     private BotDifficultyLevel botdifficultylevel;
     private BotPlayingStategy botplayingstategy;
 

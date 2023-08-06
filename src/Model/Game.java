@@ -30,13 +30,13 @@ public class Game {
         this.winningStrategies = winningStrategies;
     }
 
+    public static Builder builder(){
+        return new Builder();
+    }
     public static class Builder{
         private List<Player> players;
         private List<WinningStrategy> winningStrategies;
         private int dimension;
-        public static Builder builder(){
-            return new Builder();
-        }
 
         public Builder() {
             this.players = new ArrayList<Player>();
@@ -44,16 +44,19 @@ public class Game {
             this.dimension = 0;
         }
 
-        public void setPlayers(List<Player> players) {
+        public Builder setPlayers(List<Player> players) {
             this.players = players;
+            return this;
         }
 
-        public void setWinningStrategies(List<WinningStrategy> winningStrategies) {
+        public Builder setWinningStrategies(List<WinningStrategy> winningStrategies) {
             this.winningStrategies = winningStrategies;
+            return this;
         }
 
-        public void setDimension(int dimension) {
+        public Builder setDimension(int dimension) {
             this.dimension = dimension;
+            return this;
         }
         public void addPlayer(Player player){
             players.add(player);
@@ -97,7 +100,7 @@ public class Game {
             validateDimension();
             validateUniqueSymbolForAllPlayers();
         }
-        private Game build(){
+        public Game build(){
             validate();
             return new Game(players, new Board(dimension), winningStrategies);
         }
